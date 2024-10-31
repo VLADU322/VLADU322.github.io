@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #field{
+            width: 1080px;
+            height: 800px;
+            border: solid 1px;
+        }
+    </style>
+</head>
+<body>
+   <div id="field" onclick="createZombie(event)"></div>
+</body>
+<script>
+    let field = document.getElementById('field');
+    function createZombie(event){
+        let zombie = document.createElement('img')
+    zombie.src = 'zombie.gif';
+    document.body.append(zombie);
+
+    let left = 100
+    let step = 52;
+
+    zombie.style.position = 'fixed';
+    zombie.style.top = '100px'; // отступ сверху
+    zombie.style.left = left + 'px'; // отступ слева
+    function moveZombie(){
+    left = left + step;
+    if (left > 1400){
+        step = step * (-1);
+        zombie.style.transform = 'rotateY(180deg)'
+    }
+    zombie.style.left = left + 'px';
+    }
+    setInterval(moveZombie, 252);  
+    }
+</script>
+</html>
